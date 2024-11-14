@@ -1,0 +1,41 @@
+﻿@model FazendaUniao.Models.Pedido
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="tabela-detalhes" class="container custom-container">
+    <h1>Detalhes do Pedido</h1>
+
+    <dl id="detalhes-pedido" class="row">
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Nome do Cliente</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Cliente.NomeCliente)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Nome do Produto</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Produto.Nome)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Data do Pedido</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.DataPedido)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Quantidade</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Quantidade)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Valor Total</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.ValorTotal)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Status</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Status)</dd>
+        </div>
+    </dl>
+
+    <div id="botao-cadastro" class="form-group">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.PedidoId">Editar</a>
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model FazendaUniao.Models.Fornecedores
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div id="tabela-detalhes" class="container custom-container">
+    <h1>Detalhes do Fornecedor</h1>
+
+    <dl id="detalhes-fornecedor" class="row">
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Nome do Fornecedor</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Nome)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Cnpj</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Cnpj)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Endereço</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Endereco)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Telefone</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Telefone)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Email</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Email)</dd>
+        </div>
+    </dl>
+
+    <div id="botao-cadastro" class="form-group">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.FornecedorId">Editar</a>
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+</div>
+

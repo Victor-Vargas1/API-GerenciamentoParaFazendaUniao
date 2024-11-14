@@ -1,0 +1,73 @@
+﻿@model FazendaUniao.Models.Pedido
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="tabela-input-delete" class="container custom-container">
+    <h1>Deletar Pedidos</h1>
+
+    <div>
+        <dl class="row">
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cliente.NomeCliente)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Cliente.NomeCliente)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Produto.Nome)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Produto.Nome)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DataPedido)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DataPedido)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ValorTotal)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </div>
+        </dl>
+    </div>
+
+    <div id="botao-cadastro">
+        <input type="button" value="Deletar" class="btn btn-danger" onclick="showDeleteModal(@Model.PedidoId)" />
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+
+    <!-- Modal de confirmação de exclusão -->
+    <div id="confirmModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <p id="confirmMessage">Deseja realmente deletar este pedido?</p>
+            <button id="botaoConfimacao" onclick="confirmDelete()" class="btn btn-danger">Confirmar</button>
+            <button id="botaoConfimacao" type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Formulário escondido para submeter a exclusão -->
+    <form id="deleteForm" asp-action="Delete" method="post" style="display:none;">
+        <input type="hidden" asp-for="PedidoId" id="pedidoId" />
+    </form>
+</div>

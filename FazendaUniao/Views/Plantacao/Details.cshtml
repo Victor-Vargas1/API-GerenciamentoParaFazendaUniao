@@ -1,0 +1,40 @@
+﻿@model FazendaUniao.Models.Plantacao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="tabela-detalhes" class="container custom-container">
+    <h1>Detalhes da Plantação</h1>
+
+    <dl id="detalhes-plantacao" class="row">
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Insumo</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Insumo.Nome)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Plantação de </dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.TipoPlanta)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Data do Plantio</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.DataPlantio)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Data da Colheita</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.DataColheita)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Descrição</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.Descricao)</dd>
+        </div>
+        <div class="detalhe-item">
+            <dt class="detalhe-label col-sm-2">Quantidade do Plantio</dt>
+            <dd class="detalhe-valor col-sm-10">@Html.DisplayFor(model => model.QuantidadePlantio)</dd>
+        </div>
+    </dl>
+
+    <div id="botao-voltar" class="form-group">
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+</div>

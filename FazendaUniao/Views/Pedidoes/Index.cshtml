@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FazendaUniao.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center" id="tabela-pedidos">
+    <br />
+    <div class="tituloH1">
+        <h1>Consultar Pedidos</h1>
+    </div>
+    <br />
+  <div class="table-wrapper">
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Data do Pedido</th>
+                    <th>Valor da Compra</th>
+                    <th>@Html.DisplayNameFor(model => model.Status)</th>
+                    <th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Cliente.NomeCliente)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Produto.Nome)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DataPedido)</td>
+                        <td>R$ @String.Format("{0:N2}", item.ValorTotal)</td>
+                        <td>Concluído</td>
+                        <td>
+                                <a id="botoes" asp-action="Edit" class="btn btn-primary" asp-route-id="@item.PedidoId">Editar</a> |
+                                <a id="botoes" asp-action="Details" class="btn btn-info" asp-route-id="@item.PedidoId">Detalhes</a> |
+                                <a id="botoes" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.PedidoId">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+  </div>
+    <div class="botao-pedido">
+        <a id="botaoPedidos" class="btn btn-success" asp-action="Create">Realizar Pedido</a>
+        <a id="botaoPDF" asp-action="GeneratePdf" class="btn btn-link">Gerar PDF de Pedidos</a>
+    </div>
+
+</div>

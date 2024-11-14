@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FazendaUniao.Models.Fornecedores>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center" id="tabela-fornecedores">
+    <br />
+    <div class="tituloH1">
+        <h1>Consultar Fornecedores</h1>
+    </div>
+    <br />
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cnpj)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cnpj)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                                 <a id="botoes" asp-action="Edit" class="btn btn-primary" asp-route-id="@item.FornecedorId">Editar</a> |
+                                <a id="botoes" asp-action="Details" class="btn btn-info" asp-route-id="@item.FornecedorId">Detalhes</a> |
+                                <a id="botoes" asp-action="Delete" class="btn btn-danger" asp-route-id="@item.FornecedorId">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a id="botaoFornecedores" class="btn btn-success" asp-action="Create">Cadastrar Fornecedor</a>
+    </div>
+</div>

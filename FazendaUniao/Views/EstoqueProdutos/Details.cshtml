@@ -1,0 +1,23 @@
+﻿@model FazendaUniao.Models.EstoqueProdutos
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QuantidadeEmEstoque)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QuantidadeEmEstoque)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.EstoqueProdutosId">Editar</a> |
+    <a class="btn btn-light" asp-action="Index">Voltar</a>
+</div>

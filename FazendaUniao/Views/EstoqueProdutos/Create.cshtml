@@ -1,0 +1,49 @@
+﻿@model FazendaUniao.Models.EstoqueProdutos
+
+@{
+    ViewData["Title"] = "Adicionar Estoque de Produtos";
+}
+
+<div id="tabela-input" class="container custom-container my-4">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+    <form id="input-tabela-estoqueProdutos" asp-action="Create" method="post">
+        <!-- Produto -->
+        <div id="input-tabela-estoque">
+
+        <div id="input-tabela" class="form-group">
+            <label asp-for="Produto" class="control-label">Produto</label>
+            <select name="produtoId" class="form-control" required>
+                <option value="">Selecione um Produto</option>
+                @foreach (var produto in ViewBag.Produtos)
+                {
+                    <option value="@produto.ProdutoId">@produto.Nome</option>
+                }
+            </select>
+            <span asp-validation-for="Produto" class="text-danger"></span>
+        </div>
+
+        <!-- Quantidade -->
+        <div id="input-tabela" class="form-group">
+            <label class="control-label">Quantidade</label>
+            <input type="number" name="quantidadeEmEstoque" class="form-control" required min="1" />
+            <span asp-validation-for="QuantidadeEmEstoque" class="text-danger"></span>
+        </div>
+
+        <!-- Modal de Confirmação -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <p id="confirmMessage">Deseja realmente adicionar o produto ao estoque?</p>
+                <button id="botaoConfimacao" class="btn btn-success" onclick="confirmAction()">Confirmar</button>
+                <button id="botaoConfimacao" type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div id="botao-cadastro" class="form-group">
+            <input type="button" value="Adicionar ao Estoque" class="btn btn-success" onclick="validateAndShowModal()" />
+            <a class="btn btn-light" asp-action="Index">Voltar</a>
+        </div>
+        </div>
+    </form>
+</div>

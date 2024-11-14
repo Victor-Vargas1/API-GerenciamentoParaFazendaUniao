@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FazendaUniao.Models.Plantacao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center" id="tabela-plantacoes">
+    <br />
+    <div class="tituloH1">
+        <h1>Consultar Plantações</h1>
+    </div>
+    <br />
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Insumo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataPlantio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataColheita)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.QuantidadePlantio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Insumo.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataPlantio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataColheita)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantidadePlantio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @if (item.Status != "Concluído")
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.PlantacaoId" class="btn btn-link">Editar</a>
+                            }
+                            else
+                            {
+                                <span class="btn btn-link invisible">Editar</span>
+                            }
+                            |
+                             <a id="botoes" asp-action="Details" asp-route-id="@item.PlantacaoId" class="btn btn-info">Detalhes</a> |
+                             <a id="botoes" asp-action="Delete" asp-route-id="@item.PlantacaoId" class="btn btn-danger">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a id="botoes" asp-action="Create" class="btn btn-success">Nova Plantação</a>
+        <a id="botaoPDF" asp-action="GeneratePdfPlantacao" class="btn btn-link">Gerar PDF da Plantação</a>
+    </p>
+</div>

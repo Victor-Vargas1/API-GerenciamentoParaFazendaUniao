@@ -1,0 +1,67 @@
+﻿@model FazendaUniao.Models.Fornecedores
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div id="tabela-input" class="container custom-container my-4">
+    <h1 class="text-center mb-4">Cadastrar Fornecedores</h1>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Nome do Fornecedor -->
+                <div id="input-tabela" class="form-group">
+                    <label asp-for="Nome" class="control-label">Nome</label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <!-- CNPJ -->
+                <div class="form-group">
+                    <label asp-for="Cnpj" class="control-label">CNPJ</label>
+                    <input asp-for="Cnpj" class="form-control" id="cnpj" />
+                    <span asp-validation-for="Cnpj" class="text-danger"></span>
+                </div>
+
+                <!-- Endereço -->
+                <div class="form-group">
+                    <label asp-for="Endereco" class="control-label">Endereço</label>
+                    <input asp-for="Endereco" class="form-control" />
+                    <span asp-validation-for="Endereco" class="text-danger"></span>
+                </div>
+
+                <!-- Telefone -->
+                <div class="form-group">
+                    <label asp-for="Telefone" class="control-label">Telefone</label>
+                    <input asp-for="Telefone" class="form-control" id="telefone" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+
+                <!-- E-mail -->
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">E-mail</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Modal de Confirmação -->
+                <div id="confirmModal" class="modal">
+                    <div class="modal-content">
+                        <p id="confirmMessage">Deseja realmente cadastrar este fornecedor?</p>
+                        <button id="botaoConfimacao" onclick="confirmAction()" class="btn btn-success">Confirmar</button>
+                        <button id="botaoConfimacao" type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div id="botao-cadastro" class="form-group">
+                    <input type="button" value="Cadastrar" class="btn btn-success" onclick="validateAndShowModal()" />
+                    <a class="btn btn-light" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model FazendaUniao.Models.EstoqueInsumos
+
+@{
+    ViewData["Title"] = "Adicionar Insumo ao Estoque";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Insumo"></label>
+        <select name="insumoId" class="form-control" required>
+            <option value="">Selecione um Insumo</option>
+            @foreach (var insumo in ViewBag.Insumos)
+            {
+                <option value="@insumo.InsumoId">@insumo.Nome</option>
+            }
+        </select>
+        <span asp-validation-for="Insumo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Quantidade</label>
+        <input type="number" name="quantidade" class="form-control" required min="1" />
+        <span asp-validation-for="QuantidadeEmEstoque" class="text-danger"></span>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <p id="confirmMessage">Deseja realmente adicionar o insumo ao estoque?</p>
+            <button id="botaoConfimacao" class="btn btn-success">Confirmar</button>
+            <button id="botaoConfimacao" type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="button" value="Adicionar ao Estoque" class="btn btn-success" onclick="validateAndShowModal()" />
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+</form>
+

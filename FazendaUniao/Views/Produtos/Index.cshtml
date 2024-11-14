@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FazendaUniao.Models.Produtos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <br />
+    <div class="tituloH1">
+        <h1>Consultar Produtos</h1>
+    </div>
+    <br />
+    <div class="table-wrapper">
+<div class="TabelaGerais">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Nome)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Categoria)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().PrecoUnitario)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var produto in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => produto.Nome)</td>
+                        <td>@Html.DisplayFor(modelItem => produto.Categoria)</td>
+                        <td>@Html.DisplayFor(modelItem => produto.PrecoUnitario)</td>
+                        <td>
+                            <a id="botoes" asp-action="Edit" class="btn btn-primary" asp-route-id="@produto.ProdutoId">Editar</a>
+                                <a id="botoes" asp-action="Delete" class="btn btn-danger" asp-route-id="@produto.ProdutoId">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+    <div>
+        <a id="botoes" class="btn btn-success" asp-action="Create">Adicionar Produto</a>
+        <a id="botaoPDF" asp-action="GeneratePdfProdutos" class="btn btn-link">Gerar PDF de Produtos</a>
+    </div>
+</div>

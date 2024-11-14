@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FazendaUniao.Models.EstoqueProdutos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center" id="tabela-estoque-produtos">
+    <br />
+    <div class="tituloH1">
+        <h1>Consultar Estoque de Produtos</h1>
+    </div>
+    <br />
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th> <!-- Coluna para exibir Nome do Produto ou Nome do Insumo -->
+                    <th>@Html.DisplayNameFor(model => model.QuantidadeEmEstoque)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.Produto?.Nome))
+                            {
+                                @Html.DisplayFor(modelItem => item.Produto.Nome) <!-- Exibe Nome do Produto -->
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => item.Nome) <!-- Exibe Nome do Insumo -->
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantidadeEmEstoque)
+                        </td>
+                        <td>
+                                <a id="botoes" asp-action="Edit" class="btn btn-primary" asp-route-id="@item.EstoqueProdutosId">Editar</a> |
+                                <a id="botoes" asp-action="Details" class="btn btn-info" asp-route-id="@item.EstoqueProdutosId">Detalhes</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a id="botaoEstoqueProdutos" class="btn btn-success" asp-action="Create">Adicionar Estoque</a>
+        <a id="botaoPDF" asp-action="GeneratePdfEstoque" class="btn btn-link">Gerar PDF de Estoques</a>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@model FazendaUniao.Models.Plantacao
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="tabela-input-delete" class="container custom-container">
+    <h1>Deletar Pedido</h1>
+
+    <div>
+        <dl class="row">
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Insumo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Insumo.Nome)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TipoPlanta)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TipoPlanta)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DataPlantio)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DataPlantio)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DataColheita)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DataColheita)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Descricao)
+                </dd>
+            </div>
+            <div>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.QuantidadePlantio)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.QuantidadePlantio)
+                </dd>
+            </div>
+        </dl>
+    </div>
+
+    <div id="botao-cadastro">
+        <button type="button" class="btn btn-danger" onclick="showDeleteModal()">Deletar</button>
+        <a class="btn btn-light" asp-action="Index">Voltar</a>
+    </div>
+
+    <!-- Modal de confirmação de exclusão -->
+    <div id="confirmModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <p id="confirmMessage">Deseja realmente deletar este pedido?</p>
+            <button id="botaoConfimacao" onclick="confirmDelete()" class="btn btn-danger">Confirmar</button>
+            <button id="botaoConfimacao" type="button" onclick="closeModal()" class="btn btn-secondary">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Formulário escondido para submeter a exclusão -->
+    <form id="deleteForm" asp-action="Delete" method="post" style="display:none;">
+        <input type="hidden" asp-for="PlantacaoId" id="plantacaoId" />
+    </form>
+</div>
