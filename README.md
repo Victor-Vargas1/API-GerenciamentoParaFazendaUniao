@@ -1,4 +1,4 @@
-# ProjetoAPI-FazendaUrbanaUniao
+# API-FazendaUrbanaUniao
 
 Uma API desenvolvida para gerenciar as operações de uma fazenda urbana, permitindo o controle de fornecedores, insumos, estoques, plantações, produtos, clientes e pedidos. Este sistema foi projetado com foco em acessibilidade e segurança, sendo restrito a usuários autorizados.
 
